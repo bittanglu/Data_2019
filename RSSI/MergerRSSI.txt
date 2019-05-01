@@ -1,0 +1,29 @@
+public class MergerRSSI{
+	ArrayList<RSSI> list_A = new ArrayList<RSSI>();
+	ArrayList<RSSI> list_B = new ArrayList<RSSI>();
+	try {
+            String pathname = "D:\\java_learning\\RSSI\\database.txt"; 
+            RSSI.readFromFile(list_A,pathname);
+		}catch (Exception e){
+            e.printStackTrace();
+        }
+	int len = list_A.size();
+	int count = 1;
+	ArrayList<RSSI> list_C = new ArrayList<RSSI>();
+	for(int i = 0;i < len/30;i++){
+		list_C.add(list_A.get(i*30+count - 1));
+		if(count == 30) {
+			RSSI temp = new RSSI()
+			temp.merge(list_C);
+			list_B.add(temp);			
+			list_C.clear();
+		}
+		count++;
+	}
+	try {
+            String pathname = "D:\\java_learning\\RSSI\\database.txt"; 
+            RSSI.readFromFile(list_A,pathname);
+		}catch (Exception e){
+            e.printStackTrace();
+        }
+}
